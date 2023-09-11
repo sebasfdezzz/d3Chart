@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import Folders from "../components/Folders.svelte";
     import Chart from "../components/Chart.svelte"
     var data4 = [64.79, 54.45, 51.1, 40.22, 34.47, 29.97, 29.05, 27, 23.3, 22.76, 17.97, 17.32, 14.66, 11.16, 9.93, 8.8, 8.6, 7.21, 7.1, 6.65, 5.81, 5, 4.2, 4.07, 3.77, 3.73, 3.13, 3.09, 2.85, 2.37, 2.35, 2.33, 1.52, 1.49, 1.45, 1.39, 1.37, 1.09, 1, 0.98, 0.98, 0.96, 0.82, 0.78, 0.76, 0.66, 0.65, 0.55, 0.55, 0.31, 0.22]
@@ -8,7 +8,7 @@
 
     let tab = 1
     $: currentTab = tab
-    function getDataForTab(tab) {
+    function getDataForTab(tab: Number) {
         switch (tab) {
             case 1:
                 return data1;

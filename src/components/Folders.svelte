@@ -1,7 +1,7 @@
-<script>
-  export let activeTab = 1;
+<script lang="ts">
+  export let activeTab: Number = 1;
 
-  function changeTab(tab) {
+  function changeTab(tab: Number) {
     activeTab = tab;
   }
 
@@ -24,7 +24,7 @@
   }
 </style>
 
-<div role="button" tabindex="0" class="tab" class:active={activeTab === 1} on:click={() => changeTab(1)} on:keydown={() => {}}>Tab 1</div>
-<div role="button" tabindex="0" class="tab" class:active={activeTab === 2} on:click={() => changeTab(2)} on:keydown={() => {}}>Tab 2</div>
-<div role="button" tabindex="0" class="tab" class:active={activeTab === 3} on:click={() => changeTab(3)} on:keydown={() => {}}>Tab 3</div>
-<div role="button" tabindex="0" class="tab" class:active={activeTab === 4} on:click={() => changeTab(4)} on:keydown={() => {}}>Tab 4</div>
+<div role="button" tabindex="0" class="tab" class:active={activeTab === 1} on:click={() => changeTab(1)} on:keydown={() => {}}>All Respondents</div>
+<div role="button" tabindex="0" class="tab" class:active={activeTab === 2} on:click={() => changeTab(2)} on:keydown={() => {}}>Professional Developers</div>
+<div role="button" tabindex="0" class="tab" class:active={activeTab === 3} on:click={() => changeTab(3)} on:keydown={() => {}}>Learning To Code</div>
+<div role="button" tabindex="0" class="tab" class:active={activeTab === 4} on:click={() => changeTab(4)} on:keydown={() => {}}>Other Coders</div>

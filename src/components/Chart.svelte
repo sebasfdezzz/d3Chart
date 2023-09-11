@@ -1,10 +1,9 @@
-<script>
+<script lang="ts">
 	import { onMount, afterUpdate, beforeUpdate } from 'svelte';
 	import * as d3 from 'd3';
 
-	let el;
-	export let data;
-
+	let el: HTMLElement;
+	export let data: Array<number>;
 	function updateChart() {
 		// Remove existing bars and percentages
 		d3.select(el).selectAll("div").remove();
@@ -29,9 +28,10 @@
 			})
 			.style("position", "absolute")
 			.style("left", function(d) {
-				return (d * 5 + 10) + "px"; // 10 pixels to the right of the end
+				return (d * 5 + 35) + "px"; // 10 pixels to the right of the end
 			})
-			.style("top", "3px"); // Adjust the top position as needed
+			.style("top", "12px") // Adjust the top position as needed
+			.style("font-weight","bold");
 	}
 
 	onMount(() => {
@@ -54,19 +54,32 @@
 
 <style>
 	.chart :global(div.bar) {
-		font: 10px sans-serif;
-		background-color: steelblue;
-		text-align: right;
-		padding: 3px;
-		margin: 1px;
+		font: 12px Arial, sans-serif;
+		/*background-color: rgba(139, 0, 0, 0.7); /* Darker red with some transparency */
+		background: #ff5353!important;
+		text-align: center; /* Center text for a modern look */
+		padding: 10px; /* More padding for a modern and spacious feel */
+		margin: 5px; /* Slightly more margin for separation */
 		color: white;
+		border-radius: 10px; /* Rounded corners for a sophisticated look */
+		box-shadow: 1px 4px 3px #00000017, 0 0 0 3px #fff3;
+		transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 		position: relative;
+		/*border: 2px solid black; /* Black border */
 	}
 
 	.chart :global(div.bar .percentage) {
-		font: 10px sans-serif;
+		font-size: 14px; /* Slightly larger font for emphasis */
 		color: black;
 	}
+
+	.chart :global(div.bar:hover) {
+		background-color: rgba(139, 0, 0, 0.9); /* Darker red on hover for an interactive effect */
+		transform: scale(1.05); /* Slight scaling on hover for depth */
+		box-shadow: 0 0 20px rgba(139, 0, 0, 0.9); /* Enhanced glowing shadow on hover */
+	}
 </style>
+
+
 
 <div bind:this={el} class="chart"></div>
