@@ -11,16 +11,17 @@
   .tab {
     cursor: pointer;
     padding: 10px;
-    background-color: lightgray;
-    border: 1px solid gray;
+    background-color: transparent;
     border-radius: 5px;
+    color: rgb(172, 172, 172);
     margin-right: 5px;
     display: inline-block; /* Added CSS */
   }
   
   .active {
-    background-color: gray;
+    background-color: #ff5353!important;
     color: white;
+    border-radius: 50px;
   }
 </style>
 
