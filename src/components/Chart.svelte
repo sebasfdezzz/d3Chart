@@ -5,12 +5,9 @@
 	let el: HTMLElement;
 	export let data: Array<{ label: string, value: number }>;
 
-
 	function updateChart() {
-		// Remove existing bars and percentages
 		d3.select(el).selectAll("div").remove();
 
-		// Create new bars
 		const bars = d3.select(el)
 			.selectAll("div")
 			.data(data)
@@ -19,11 +16,9 @@
 			.attr("class", "bar")
 			.style("margin", "15px 0 15px 0");
 
-		// Create a container for label and value
 		const labelValueContainer = bars.append("div")
 			.attr("class", "label-value-container");
 
-// Append label to the left
 		labelValueContainer.append("span")
 			.attr("class", "label")
 			.text(d => d.label)
@@ -31,28 +26,22 @@
 			.style("font-size", "14px")
 			.style("color","rgb(220, 220, 220)")
 			.style("left", function(d) {
-				// Measure the label's width
 				const labelWidth = this.getBoundingClientRect().width;
-				// Calculate the left position
 				return (-labelWidth - 10) + "px";
 			})
-			.style("top", "10px") // Adjust the top position as needed
+			.style("top", "10px");
 
-
-		// Append value to the right
 		labelValueContainer.append("span")
 			.attr("class", "value")
 			.text(d => d.value + "%")
 			.style("position", "absolute")
 			.style("font-size", "14px")
 			.style("left", function(d) {
-				return (d.value * 8 + 35) + "px"; // 10 pixels to the right of the end
+				return (d.value * 8 + 35) + "px";
 			})
-			.style("top", "10px") // Adjust the top position as needed
+			.style("top", "10px")
 			.style("font-weight","bold");
-			
 
-		// Style the bars
 		bars.style("width", function (d) {
 			return d.value * 8 + "px";
 		})
@@ -64,15 +53,11 @@
 	});
 
 	beforeUpdate(() => {
-		// This is called before the data updates, remove the old chart
 		d3.select(el).selectAll("div").remove();
-
-		// Call updateChart to display the chart initially and when data changes
 		updateChart();
 	});
 
 	afterUpdate(() => {
-		// This is called after the data updates, create the updated chart
 		updateChart();
 	});
 </script>
@@ -111,3 +96,4 @@
 </style>
 
 <div bind:this={el} class="chart" style="margin-left: 300px; margin-top: 50px;"></div>
+
